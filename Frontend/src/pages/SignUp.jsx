@@ -66,6 +66,39 @@ export default function SignUp() {
                 className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
               />
             </div>
+            {/* Phone np. */}
+            <div>
+              <label className="block text-sm text-gray-200 mb-2">
+                Phone No.
+              </label>
+              <input
+                type="number"
+                placeholder="Enter your phone no."
+                className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              />
+            </div>
+            {/* Address */}
+            <div>
+              <label className="block text-sm text-gray-200 mb-2">
+                Address
+              </label>
+              <input
+                type="text"
+                placeholder="Address"
+                className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              />
+            </div>
+             {/* Pincode */}
+            <div>
+              <label className="block text-sm text-gray-200 mb-2">
+                Pincode
+              </label>
+              <input
+                type="number"
+                placeholder="Address"
+                className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+              />
+            </div>
 
             {/* Button */}
             <button

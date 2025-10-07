@@ -19,19 +19,19 @@ router.post('/login',[
   UserController.loginUser
 );
 
-router.get('/profile', authmiddleware.authUser, UserController.getUserProfile);
+router.get('/fetchprofile', authmiddleware.authUser, UserController.getUserProfile);
 
-router.put('/profile', [
+router.put('/updateprofile', [
   authmiddleware.authUser,
   body('email').optional().isEmail().withMessage('Invalid Email'),
   body('fullname.firstname').optional().isLength({ min: 3 }).withMessage('First name must be at least 3 characters long'),
   body('password').optional().isLength({ min: 6 }).withMessage('Password must be at least 6 characters long')
 ], UserController.updateUserProfile);
 
-router.delete('/profile', authmiddleware.authUser, UserController.deleteUserProfile);
+router.delete('/deleteprofile', authmiddleware.authUser, UserController.deleteUserProfile);
 
 router.get('/logout', authmiddleware.authUser, UserController.logoutUser);
 
 router.post('/password/forgot',authmiddleware.authUser,UserController.forgotPassord);
-router.put('/password/:token',authmiddleware.authUser,UserController.resetPassword)
+router.put('/password/reset/:token',authmiddleware.authUser,UserController.resetPassword)
 module.exports = router;
