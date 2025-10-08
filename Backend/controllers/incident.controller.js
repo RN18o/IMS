@@ -49,11 +49,11 @@ module.exports.createIncident = async (req, res, next) => {
   if (!user) return res.status(401).json({ message: "Unauthorized" });
 
   try {
-    // build reporterdetails (only include name for display) and set reporterId for ownership
     const reporterName = user.fullname?.firstname ? `${user.fullname.firstname} ${user.fullname.lastname || ''}`.trim() : undefined;
+    // console.log(reporterName);
     const payload = {
       incidentId,
-      // reporterdetails: { name: reporterName },
+      reporterdetails: { name: reporterName },
       incidentDetails,
       reporterId:req.user._id,
       reportedDateTime,
@@ -63,7 +63,6 @@ module.exports.createIncident = async (req, res, next) => {
 
     const incident = await incidentService.createIncident(payload);
 
-  // sanitize response: return reporterdetails as a plain string (name)
   if (incident && incident.reporterdetails) incident.reporterdetails = (incident.reporterdetails.name || incident.reporterdetails);
 
   res.status(201).json({ message: "Incident created", incident });
@@ -75,4 +74,15 @@ module.exports.createIncident = async (req, res, next) => {
  module.exports.getAllIncidents = async (req,res,next) => {
     const incidents = await incidentModel.find().populate('reporterId').exec();
     res.status(200).json({message:"All Incident fetch Successfully",incidents});
+}
+
+module.exports.getOneIncidents = async (req,res,next) => {
+  const id = req.params.id;
+  try {
+    const incident = await incidentModel.findById(id).populate("reporterId").exec();
+    res.status(200).json({ message: 'Incident fetched', incident });
+  } catch (err) {
+    if (err.status) return res.status(err.status).json({ message: err.message });
+    next(err);
+  }
 }

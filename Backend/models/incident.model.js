@@ -6,10 +6,13 @@ const IncidentSchema = new mongoose.Schema(
       type: String,
       unique:true
     },
-    // reporterdetails: {
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: "user",
-    // },
+    reporterdetails: {
+      id:{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+      },
+      name:String
+    },
     reporterId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "user",

@@ -13,7 +13,7 @@ return generateIncidentId();
 
 module.exports.createIncident = async ({
     incidentId,
-    // reporterdetails,
+    reporterdetails,
     incidentDetails,
     reporterId,
     reportedDateTime,
@@ -26,7 +26,7 @@ module.exports.createIncident = async ({
 
     const toSave = {
         incidentId: incidentId || getincidentId(),
-        // reporterdetails: reporterdetails ? { name: reporterdetails.name } : undefined,
+        reporterdetails: reporterdetails ? { name: reporterdetails.name } : undefined,
         incidentDetails,
         reporterId,
         reportedDateTime,
@@ -38,7 +38,7 @@ module.exports.createIncident = async ({
     return incident;
 };
 
-// Update an incident only if the requesting user is the reporter
+// Update an incident
 module.exports.updateIncident = async (id, userId, updates) => {
     if (!id) throw new Error("Incident id required");
     if (!userId) throw new Error("User id required");
@@ -49,7 +49,6 @@ module.exports.updateIncident = async (id, userId, updates) => {
         err.status = 404;
         throw err;
     }
-    // reporterId may be stored in different shapes; check common places blog?.authorId?._id.toString()
     const ownerId =
         incident.reporterId?.id?.toString() ||
         (incident.reporterId && incident.reporterId.toString && incident.reporterId.toString());
@@ -89,3 +88,14 @@ module.exports.deleteIncident = async (id, userId) => {
     const res = await incidentModel.findByIdAndDelete(id);
     return res;
 };
+
+module.exports.getOneIncident = async (id) => {
+    if (!id) throw new Error('Incident id required');
+    const incident = await incidentModel.findById(id).populate('reporterId','fullname').exec();
+    if (!incident) {
+        const err = new Error('Incident not found');
+        err.status = 404;
+        throw err;
+    }
+    return incident;
+}

@@ -36,5 +36,6 @@ router.post(
 );
 
 router.get("/allincident", authmiddleware.authUser, incidentController.getAllIncidents)
+router.get("/oneincident/:id", authmiddleware.authUser, incidentController.getOneIncidents)
 
 module.exports = router;

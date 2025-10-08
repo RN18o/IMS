@@ -19,7 +19,7 @@ router.post('/login',[
   UserController.loginUser
 );
 
-router.get('/fetchprofile', authmiddleware.authUser, UserController.getUserProfile);
+router.get('/profile', authmiddleware.authUser, UserController.getUserProfile);
 
 router.put('/updateprofile', [
   authmiddleware.authUser,
