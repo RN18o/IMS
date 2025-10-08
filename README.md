@@ -6,6 +6,34 @@ This system allows users to create, update, and view their own incidents, while 
 ---
 
 
+## Database Schema
+
+**User Model**
+```js
+{
+  fullname: {
+    firstname: String,
+    lastname: String
+  },
+  email: String,
+  password: String,
+  phone: Number,
+  address: String,
+  pincode: Number
+}
+ ```
+**Incidents Model**
+```js
+{
+  incidentId: String,
+  reporterId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  incidentDetails: String,
+  reportedDateTime: Date,
+  priority: String,
+  status: String
+}
+```
+
 # Setup and launch process
 **1). Clone the Repository**<br/>
        Open your terminal and run the following command to clone the repository:<br/>
