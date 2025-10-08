@@ -32,7 +32,7 @@ This system allows users to create, update, and view their own incidents, while 
        ```
 
        
-**3). Install Dependencies **<br/>
+**3). Install Dependencies**<br/>
        Install the necessary packages using npm in both Frontend and Backend:<br/>
        
        ```
@@ -41,6 +41,24 @@ This system allows users to create, update, and view their own incidents, while 
        yarn install
        
        ```
+
+
+**3). Create .env file both Frontend and Backend**<br/>
+     For Backend -->
+     
+     PORT=4000
+     MONGO_URI=your_mongodb_connection_string
+     JWT_SECRET=your_secret_key
+     SMPT_HOST=your_host
+     SMPT_PORT=your_port
+     SMPT_SERVICE=your_services
+     SMPT_MAIL=your_mail
+     SMPT_PASSWORD=your_password_key
+
+     For Frontend --> 
+     
+     VITE_BASE_URL=http://localhost:4000
+       
 
        
 **4). Start the Development Server**<br/>
