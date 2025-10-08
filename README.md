@@ -73,6 +73,9 @@ This system allows users to create, update, and view their own incidents, while 
       
        ```
 
+       Backend will run on localhost:4000
+       Frontend will run on localhost:5173
+
        
 **5). Access the Application**<br/>
       Open your web browser and navigate to:<br/> 
