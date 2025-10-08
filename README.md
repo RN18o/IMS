@@ -118,5 +118,7 @@ This system allows users to create, update, and view their own incidents, while 
 ![image alt](https://github.com/RN18o/IMS/blob/1c8d68d8e636add1c1326ff316f2c5bde1075e1d/Screenshot%202025-10-08%20224352.png)
 ![image alt](https://github.com/RN18o/IMS/blob/1c8d68d8e636add1c1326ff316f2c5bde1075e1d/Screenshot%202025-10-08%20224408.png)
 
+Thanks!! 🙏
+
       
 
